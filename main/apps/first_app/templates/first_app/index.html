@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Login and Registration</title>
+</head>
+<body>
+    <div class="container">
+        <div class="registration">
+            <h1>Registration</h1>           
+            <form action="/registration" method="post">
+                {% csrf_token %}
+                <label for="first_name">First Name: <input type="text" name="first_name" id="first_name"></label><br>
+                <label for="last_name">Last Name: <input type="text" name="last_name" id="last_name"></label><br>
+                <label for="emailReg">Email: <input type="text" name="emailReg" id="emailReg"></label><br>
+                <label for="passwordReg">Password: <input type="password" name="passwordReg" id="passwordReg"></label><br>
+                <label for="passwordConfirm">Confirm pw: <input type="password" name="passwordConfirm" id="passwordConfirm"></label><br>
+                <input type="submit" name="reg_button" value="Register">
+            </form>
+        </div>
+        {% if messages %}
+            {% for message in messages %}
+                <h2 style="color: red">{{ message }}</h2>
+            {% endfor %}   
+        {% endif %}
+        <div class="login">
+            <h1>Login</h1>
+            <form action="/login" method="post">
+                {% csrf_token %}
+                <label for="emailLogin">Email: <input type="text" name="emailLogin" id="emailLogin"></label><br>
+                <label for="passwordLogin">Password: <input type="password" name="passwordLogin" id="passwordLogin"></label><br>
+                <input type="submit" name="login_button" value="Login">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
